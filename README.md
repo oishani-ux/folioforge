@@ -6,9 +6,7 @@
 
 ## 📌 Project Overview
 
-* **Project Title:** Folio Forge
-* **Domain:** Web Development / Full-Stack Application
-* **Type:** College Group Project (2-Person Team)
+* **Project Title:** Folio Forge-Full Stack Application
 
 ---
 
