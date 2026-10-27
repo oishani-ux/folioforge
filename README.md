@@ -6,15 +6,7 @@
 
 ## 📌 Project Overview
 
-* **Project Title:** Folio Forge
-* **Domain:** Web Development / Full-Stack Application
-* **Type:** College Group Project (2-Person Team)
-
-### 👥 Team Details
-| Student Name | Roll Number | Role / Responsibilities |
-| :--- | :--- | :--- |
-| **[Student 1 Name]** | `[Roll No 1]` | Frontend Development, UI/UX Design, Live Preview Engine |
-| **[Student 2 Name]** | `[Roll No 2]` | Backend Architecture, Database, Deployment & API Integration |
+* **Project Title:** Folio Forge-Full Stack Application
 
 ---
 
@@ -51,7 +43,7 @@
 
 ### Backend & Database *(Level 2/3)*
 * **Server Runtime:** Node.js / Express.js (or Python FastAPI/Flask)
-* **Database:** MongoDB / PostgreSQL
+* **Database:** MongoDB 
 * **Authentication:** JWT (JSON Web Tokens) / OAuth
 
 ### External APIs & Deployment
