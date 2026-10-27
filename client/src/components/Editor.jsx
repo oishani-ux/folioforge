@@ -1,5 +1,5 @@
 // The form on the left: basics, photo, skills, social links.
-import { usePortfolio } from '../store/usePortfolio'
+import { usePortfolio, LIMITS } from '../store/usePortfolio'
 import { compressImage } from '../lib/exporters'
 import ProjectList from './ProjectList'
 
@@ -38,13 +38,13 @@ export default function Editor() {
     <div className="space-y-8">
       <Section title="Basics">
         <Field label="Full name">
-          <input className={inputCls} value={data.name} onChange={(e) => setField('name', e.target.value)} placeholder="Riya Sharma" />
+          <input className={inputCls} value={data.name} maxLength={LIMITS.name} onChange={(e) => setField('name', e.target.value)} placeholder="Riya Sharma" />
         </Field>
         <Field label="Tagline">
-          <input className={inputCls} value={data.tagline} onChange={(e) => setField('tagline', e.target.value)} placeholder="Full-stack developer who…" />
+          <input className={inputCls} value={data.tagline} maxLength={LIMITS.tagline} onChange={(e) => setField('tagline', e.target.value)} placeholder="Full-stack developer who…" />
         </Field>
         <Field label="About you">
-          <textarea className={inputCls} rows={4} value={data.about} onChange={(e) => setField('about', e.target.value)} placeholder="A few lines about you" />
+          <textarea className={inputCls} rows={4} value={data.about} maxLength={LIMITS.about} onChange={(e) => setField('about', e.target.value)} placeholder="A few lines about you" />
         </Field>
         <Field label="Profile photo">
           <div className="flex items-center gap-3">
@@ -58,11 +58,11 @@ export default function Editor() {
       </Section>
 
       <Section title="Skills">
-        <Field label="Separate with commas">
+        <Field label={`Separate with commas (max ${LIMITS.skills})`}>
           <input
             className={inputCls}
             value={data.skills.join(', ')}
-            onChange={(e) => setField('skills', e.target.value.split(',').map((s) => s.trimStart()))}
+            onChange={(e) => setField('skills', e.target.value.split(',').map((s) => s.trimStart().slice(0, LIMITS.skill)).slice(0, LIMITS.skills))}
             placeholder="React, Node.js, Figma"
           />
         </Field>
@@ -73,7 +73,7 @@ export default function Editor() {
       <Section title="Links">
         {[['github', 'GitHub URL', 'https://github.com/you'], ['linkedin', 'LinkedIn URL', 'https://linkedin.com/in/you'], ['website', 'Website', 'https://…'], ['email', 'Email', 'you@email.com']].map(([key, label, ph]) => (
           <Field key={key} label={label}>
-            <input className={inputCls} value={data.socials[key]} onChange={(e) => setSocial(key, e.target.value)} placeholder={ph} />
+            <input className={inputCls} value={data.socials[key]} maxLength={LIMITS.social} onChange={(e) => setSocial(key, e.target.value)} placeholder={ph} />
           </Field>
         ))}
       </Section>

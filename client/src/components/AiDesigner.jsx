@@ -2,6 +2,7 @@
 // and we switch the preview to the AI template using that spec.
 import { useState } from 'react'
 import { usePortfolio } from '../store/usePortfolio'
+import { api } from '../lib/api'
 
 const IDEAS = [
   'Clean and minimal, lots of white space',
@@ -20,16 +21,13 @@ export default function AiDesigner() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/ai/design', {
+      const out = await api('/ai/design', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        body: {
           prompt,
           profile: { tagline: data.tagline, skills: data.skills, projectCount: data.projects?.length || 0 },
-        }),
+        },
       })
-      const out = await res.json()
-      if (!res.ok) throw new Error(out.error || 'Something went wrong')
       setTheme('ai', out.spec)
       setTheme('template', 'ai')
     } catch (e) {
